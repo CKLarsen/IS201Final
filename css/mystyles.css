@@ -1,0 +1,19 @@
+h1{
+    font-family: Impact, Haettenschweiler;
+    text-decoration: underline;
+    text-align: center;
+}
+
+a{
+    font-weight: bold;
+}
+
+ol{
+    font-style: italic;
+    font-weight: bold;
+}
+
+ul{
+    font-style: normal;
+    font-weight: normal;
+}

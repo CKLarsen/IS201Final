@@ -1,11 +1,18 @@
+/*Allowed fonts: Times New Roman, Verdana, Georgia, Arial, Helvetica, sans-serif*/
 h1{
     font-family: Impact, Haettenschweiler;
     text-decoration: underline;
     text-align: center;
+    color: white
 }
 
-a{
+a:link{
     font-weight: bold;
+    color: white    
+}
+
+a:visited{
+    color: lightgray
 }
 
 ol{
@@ -17,3 +24,4 @@ ul{
     font-style: normal;
     font-weight: normal;
 }
+

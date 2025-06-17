@@ -1,10 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-    </head>
-    <body>
-    This will be where the little AI web app/game is.
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Snake Game</title>
+  <style>
+    canvas { background: rgb(0, 0, 0); display: block; margin: auto; }
+  </style>
+</head>
+<body>
+    <a href="scratch.html">Scratch Page</a>
+  <canvas id="game" width="400" height="400"></canvas>
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+
+    const box = 20;
+    let snake = [{ x: 160, y: 200 }];
+    let food = { x: 200, y: 200 };
+    let dx = box, dy = 0;
+
+    document.addEventListener("keydown", move);
+    function move(e) {
+      if (e.key === "ArrowUp" && dy === 0) [dx, dy] = [0, -box];
+      else if (e.key === "ArrowDown" && dy === 0) [dx, dy] = [0, box];
+      else if (e.key === "ArrowLeft" && dx === 0) [dx, dy] = [-box, 0];
+      else if (e.key === "ArrowRight" && dx === 0) [dx, dy] = [box, 0];
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, 400, 400);
+
+      // draw food
+      ctx.fillStyle = "red";
+      ctx.fillRect(food.x, food.y, box, box);
+
+      // move snake
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+      snake.unshift(head);
+
+      // eat food
+      if (head.x === food.x && head.y === food.y) {
+        food = {
+          x: Math.floor(Math.random() * 20) * box,
+          y: Math.floor(Math.random() * 20) * box,
+        };
+      } else {
+        snake.pop();
+      }
+
+      // draw snake
+      ctx.fillStyle = "yellow";
+      snake.forEach(part => ctx.fillRect(part.x, part.y, box, box));
+
+      // check collision
+      if (
+        head.x < 0 || head.x >= 400 || head.y < 0 || head.y >= 400 ||
+        snake.slice(1).some(p => p.x === head.x && p.y === head.y)
+      ) {
+        alert("Game Over");
+        clearInterval(game);
+      }
+    }
+
+    const game = setInterval(draw, 100);
+  </script>
+</body>
 </html>

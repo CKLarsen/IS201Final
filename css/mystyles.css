@@ -1,27 +1,33 @@
 
-h1{
+.webpagetitle{
     font-family: Impact, Haettenschweiler;
     text-decoration: underline;
     text-align: center;
     color: white
 }
 
+.gametitle{
+    font-weight: bold;
+    font-style: italic;
+}
 a:link{
     font-weight: bold;
-    color: white    
-}
-
-a:visited{
     color: lightgray
 }
 
-ol{
-    font-style: italic;
-    font-weight: bold;
+a:visited{
+    color: gray
 }
 
 ul{
     font-style: normal;
     font-weight: normal;
+}
+
+.description{
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+    color: darkslateblue
 }
 
